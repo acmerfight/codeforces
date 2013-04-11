@@ -1,1 +1,1 @@
-利用codeforeces练习python
+利用codeforeces练习代码的一次无bug运行和基本算法
