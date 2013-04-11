@@ -1,18 +1,20 @@
 total = input()
+score_list = []
+data = [] 
 name_score = {}
 for index in range(total):
     name, score = raw_input().split() 
-    if name in name_score:
-        name_score[name][0] += int(score)
-        name_score[name][1] = index
-    else:
-        temp_dict = {name: [int(score), index]}
-        name_score.update(temp_dict)
-sorted_by_socore = sorted(name_score.items(), key=lambda d:d[1][0], reverse=True)
-max_item = sorted_by_socore[0] 
-for item in sorted_by_socore[1:]:
-    if max_item[1][0] == item[1][0] and max_item[1][1] > item[1][1]:
-        max_item = item
-    else:
+    data.append((name, int(score)))
+    name_score[name] = name_score.get(name, 0) + int(score)
+for name, score in name_score.iteritems():
+    score_list.append(score)
+
+max_score = max(score_list)
+temp = {}
+for NameScore in data:
+    name, score = NameScore
+    temp[name] = temp.get(name, 0) + score
+    if temp[name] >= max_score and name_score[name] == max_score:
+        print name
         break
-print max_item[0]
+
