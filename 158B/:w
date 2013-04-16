@@ -1,4 +1,0 @@
-total = input()
-
-data_list = map(int, raw_input().split())
-data_list.sort()
